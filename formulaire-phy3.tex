@@ -1,0 +1,89 @@
+% ============================================================
+%  MODÈLE DE FORMULAIRE — 2 colonnes
+%  Lecture : colonne gauche de haut en bas, puis colonne droite
+%  de haut en bas, puis page suivante.
+%  Titres : bleu souligné bleu | Sous-chapitres : bande grise
+% ============================================================
+\documentclass[9pt]{extarticle}
+
+% ---------- Langue, police, encodage ----------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+
+% ---------- Mise en page ----------
+\usepackage[a4paper, margin=1cm]{geometry}
+\usepackage{multicol}          % les 2 colonnes
+\setlength{\columnsep}{0.5cm}  % espace entre les colonnes
+\setlength{\parindent}{0pt}
+\pagestyle{empty}              % pas de numéro de page
+
+% ---------- Maths, couleurs, tableaux ----------
+\usepackage{amsmath, amssymb}
+\usepackage{xcolor}
+\usepackage{tabularx, array}
+\usepackage{titlesec}
+
+% ---------- Couleurs ----------
+\definecolor{titrebleu}{RGB}{0,70,160}
+\definecolor{bandegrise}{gray}{0.82}
+
+% ---------- Surlignage bleu (effet stabilo) ----------
+\definecolor{stabibleu}{RGB}{204,233,248}
+\newcommand{\stabibleu}[1]{%
+  \begingroup\setlength{\fboxsep}{1.5pt}%
+  \colorbox{stabibleu}{#1}\endgroup}
+
+% ---------- TITRE (chapitre) : texte normal, surligné bleu, centré ----------
+\titleformat{\section}[block]
+  {\centering\large\normalfont\large}
+  {}{0pt}
+  {\stabibleu}
+\titlespacing*{\section}{0pt}{8pt}{6pt}
+
+% ---------- SOUS-CHAPITRE : bande grise sur toute la colonne ----------
+%  (une colonne = la moitié de la page)
+\newcommand{\bandegrise}[1]{%
+  \colorbox{bandegrise}{%
+    \parbox{\dimexpr\columnwidth-2\fboxsep\relax}{\strut#1}}}
+\titleformat{\subsection}[block]
+  {\normalsize\bfseries\color{black}}
+  {}{0pt}
+  {\bandegrise}
+\titlespacing*{\subsection}{0pt}{6pt}{3pt}
+
+% ---------- Sous-sous-chapitre (optionnel) : gras simple ----------
+\titleformat{\subsubsection}[block]{\small\bfseries}{}{0pt}{}
+\titlespacing*{\subsubsection}{0pt}{4pt}{2pt}
+
+% ---------- Tableau de formules prêt à l'emploi ----------
+%  Usage :
+%   \begin{formules}
+%     Intitulé & $formule$ & unité & remarques \\ \hline
+%   \end{formules}
+\renewcommand{\arraystretch}{1.4}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newenvironment{formules}
+  {\par\small\noindent
+   \tabularx{\columnwidth}{|C{0.18\columnwidth}|C{0.30\columnwidth}|C{0.08\columnwidth}|Y|}
+   \hline
+   \textbf{Intitulé} & \textbf{Formule} & \textbf{Unité} & \textbf{Variables / remarques} \\ \hline}
+  {\endtabularx\par\medskip}
+
+% ============================================================
+\begin{document}
+\begin{multicols*}{2}   % multicols* = remplit gauche puis droite (pas d'équilibrage)
+
+% ------------------------------------------------------------
+% Un fichier par chapitre dans le dossier chapitres/
+% Pour ajouter un chapitre : créer chapitres/chapitreN.tex et ajouter la ligne \input ci-dessous
+\input{chapitres/chapitre1}
+\input{chapitres/chapitre2}
+
+% Pour forcer le passage à la colonne suivante : \columnbreak
+% Pour forcer une nouvelle page : \newpage
+
+\end{multicols*}
+\end{document}
