@@ -1,8 +1,7 @@
 % ============================================================
-%  MODÈLE DE FORMULAIRE — 2 colonnes
-%  Lecture : colonne gauche de haut en bas, puis colonne droite
-%  de haut en bas, puis page suivante.
-%  Titres : bleu souligné bleu | Sous-chapitres : bande grise
+%  FORMULAIRE PHY3 — 2 colonnes
+%  Lecture : colonne gauche de haut en bas, puis colonne droite,
+%  puis page suivante. Un fichier par chapitre dans chapitres/.
 % ============================================================
 \documentclass[9pt]{extarticle}
 
@@ -10,80 +9,103 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
-\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{newtxtext,newtxmath}   % police Times (texte + maths)
 
 % ---------- Mise en page ----------
-\usepackage[a4paper, margin=1cm]{geometry}
-\usepackage{multicol}          % les 2 colonnes
-\setlength{\columnsep}{0.5cm}  % espace entre les colonnes
+\usepackage[a4paper, top=1cm, left=1cm, right=1cm, bottom=1.4cm, footskip=0.6cm]{geometry}
+\usepackage{multicol}
+\setlength{\columnsep}{0.5cm}
+\setlength{\columnseprule}{0.4pt}  % filet vertical entre les colonnes
 \setlength{\parindent}{0pt}
-\pagestyle{empty}              % pas de numéro de page
 
-% ---------- Maths, couleurs, tableaux ----------
-\usepackage{amsmath, amssymb}
-\usepackage{xcolor}
-\usepackage{tabularx, array}
+% ---------- Numéro de page : en bas à droite, grand ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[R]{\LARGE\thepage}
+
+% ---------- Couleurs, tableaux, schémas ----------
+\usepackage[table]{xcolor}
+\usepackage{array}
 \usepackage{titlesec}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 
-% ---------- Couleurs ----------
-\definecolor{titrebleu}{RGB}{0,70,160}
-\definecolor{bandegrise}{gray}{0.82}
+\definecolor{stabibleu}{RGB}{204,233,248}   % surlignage des titres
+\definecolor{grisclair}{gray}{0.90}         % en-tête et sous-titres des tableaux
+\definecolor{bleutexte}{RGB}{25,85,200}     % valeurs écrites en bleu
+\colorlet{champ}{orange!90!red}             % champs E dans les schémas
+\newcommand{\bleu}[1]{\textcolor{bleutexte}{#1}}
+\newcommand{\rouge}[1]{\textcolor{red}{#1}}
 
-% ---------- Surlignage bleu (effet stabilo) ----------
-\definecolor{stabibleu}{RGB}{204,233,248}
-\newcommand{\stabibleu}[1]{%
-  \begingroup\setlength{\fboxsep}{1.5pt}%
-  \colorbox{stabibleu}{#1}\endgroup}
+% ---------- Surlignage (effet stabilo) ----------
+\newcommand{\stabilo}[1]{%
+  \begingroup\setlength{\fboxsep}{1.5pt}\colorbox{stabibleu}{#1}\endgroup}
 
-% ---------- TITRE (chapitre) : texte normal, surligné bleu, centré ----------
-\titleformat{\section}[block]
-  {\centering\large\normalfont\large}
-  {}{0pt}
-  {\stabibleu}
-\titlespacing*{\section}{0pt}{8pt}{6pt}
+% ---------- TITRE (chapitre) : gras, centré, surligné ----------
+\titleformat{\section}[block]{\centering\large\bfseries}{}{0pt}{\stabilo}
+\titlespacing*{\section}{0pt}{4pt}{3pt}
 
-% ---------- SOUS-CHAPITRE : bande grise sur toute la colonne ----------
-%  (une colonne = la moitié de la page)
-\newcommand{\bandegrise}[1]{%
-  \colorbox{bandegrise}{%
-    \parbox{\dimexpr\columnwidth-2\fboxsep\relax}{\strut#1}}}
-\titleformat{\subsection}[block]
-  {\normalsize\bfseries\color{black}}
-  {}{0pt}
-  {\bandegrise}
-\titlespacing*{\subsection}{0pt}{6pt}{3pt}
+% ---------- SOUS-CHAPITRE : gras, surligné bleu ----------
+\titleformat{\subsection}[block]{\small\bfseries}{}{0pt}{\stabilo}
+\titlespacing*{\subsection}{0pt}{3pt}{1pt}
 
-% ---------- Sous-sous-chapitre (optionnel) : gras simple ----------
-\titleformat{\subsubsection}[block]{\small\bfseries}{}{0pt}{}
-\titlespacing*{\subsubsection}{0pt}{4pt}{2pt}
-
-% ---------- Tableau de formules prêt à l'emploi ----------
-%  Usage :
-%   \begin{formules}
-%     Intitulé & $formule$ & unité & remarques \\ \hline
+% ============================================================
+%  Tableau de formules
+%   \begin{formules}            (avec ligne d'en-tête)
+%   \begin{formules}[sans]      (sans ligne d'en-tête)
+%     \ligne{Intitulé}{$formule$}{unité}{remarques}
+%     \soustitre{Sous-titre dans le tableau}
+%     \ligneschema{code tikz}   (schéma sur toute la largeur)
 %   \end{formules}
-\renewcommand{\arraystretch}{1.4}
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
-\newenvironment{formules}
-  {\par\small\noindent
-   \tabularx{\columnwidth}{|C{0.18\columnwidth}|C{0.30\columnwidth}|C{0.08\columnwidth}|Y|}
-   \hline
-   \textbf{Intitulé} & \textbf{Formule} & \textbf{Unité} & \textbf{Variables / remarques} \\ \hline}
-  {\endtabularx\par\medskip}
+%  Dans les remarques : \schema{code tikz}
+%  Chaque ligne est un petit tableau : le tableau peut continuer
+%  dans la colonne suivante (pas de vide).
+% ============================================================
+\renewcommand{\arraystretch}{1.1}
+\newcolumntype{C}[1]{>{\centering\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash\hspace{0pt}}m{#1}}
+\newlength{\lI}\newlength{\lF}\newlength{\lU}\newlength{\lR}\newlength{\lT}
+\newcommand{\largeurs}{%
+  \setlength{\tabcolsep}{2.5pt}%
+  \setlength{\lI}{0.16\columnwidth}%   Intitulé
+  \setlength{\lF}{0.39\columnwidth}%   Formule
+  \setlength{\lU}{0.08\columnwidth}%   Unité
+  \setlength{\lR}{\dimexpr\columnwidth-\lI-\lF-\lU-8\tabcolsep-5\arrayrulewidth\relax}% Remarques
+  \setlength{\lT}{\dimexpr\columnwidth-2\tabcolsep-2\arrayrulewidth\relax}}% Toute la largeur
+\newcommand{\rangee}[1]{%
+  \par\nointerlineskip\noindent
+  \begin{tabular}{|C{\lI}|C{\lF}|C{\lU}|L{\lR}|}\hline #1 \\ \hline\end{tabular}\par}
+\newcommand{\suite}{\vspace{-\arrayrulewidth}}
+\newcommand{\collee}{\nopagebreak\vspace{-\arrayrulewidth}\nopagebreak}
+\newcommand{\ligne}[4]{\rangee{#1 & #2 & #3 & #4}\suite}
+\newcommand{\soustitre}[1]{%
+  \par\nointerlineskip\noindent
+  \begin{tabular}{|L{\lT}|}\hline\rowcolor{grisclair}\textbf{#1} \\ \hline\end{tabular}\par\collee}
+\newcommand{\ligneschema}[1]{%
+  \par\nointerlineskip\noindent
+  \begin{tabular}{|>{\centering\arraybackslash}m{\lT}|}\hline
+  \begin{tikzpicture}[font=\tiny, >={Stealth[length=3pt]}, line cap=round]#1\end{tikzpicture} \\ \hline\end{tabular}\par\suite}
+\newcommand{\schema}[1]{%
+  \par\vspace{1pt}{\centering
+  \begin{tikzpicture}[font=\tiny, >={Stealth[length=3pt]}, line cap=round, every node/.style={inner sep=1pt}]#1\end{tikzpicture}\par}\vspace{1pt}}
+\newenvironment{formules}[1][avec]
+  {\par\footnotesize\largeurs
+   \def\optformules{#1}\def\optsans{sans}%
+   \ifx\optformules\optsans\else
+     \rangee{\rowcolor{grisclair}\textbf{Intitulé} & \textbf{Formule} & \textbf{Unité} & \textbf{Variables / remarques}}\collee
+   \fi}
+  {\par\vspace{\arrayrulewidth}\smallskip}
 
 % ============================================================
 \begin{document}
-\begin{multicols*}{2}   % multicols* = remplit gauche puis droite (pas d'équilibrage)
+\begin{multicols*}{2}
+\raggedcolumns
 
-% ------------------------------------------------------------
-% Un fichier par chapitre dans le dossier chapitres/
-% Pour ajouter un chapitre : créer chapitres/chapitreN.tex et ajouter la ligne \input ci-dessous
-\input{chapitres/chapitre1}
-\input{chapitres/chapitre2}
-
-% Pour forcer le passage à la colonne suivante : \columnbreak
-% Pour forcer une nouvelle page : \newpage
+\input{chapitres/electrostatique}
+\input{chapitres/ondes}
 
 \end{multicols*}
 \end{document}

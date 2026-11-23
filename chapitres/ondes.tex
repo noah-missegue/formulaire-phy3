@@ -1,0 +1,463 @@
+\section{ONDES}
+
+% ============================================================
+\subsection{Généralités}
+\begin{formules}
+  \ligne{Vitesse de propagation, célérité}
+    {$v,\ c$}
+    {m/s}
+    {$v$ : vitesse de propagation d'une perturbation dans un milieu ; $c$ : vitesse de la lumière, vide : \newline
+     \bleu{$c = 299\,792\,458$ m/s}}
+  \ligne{Équation d'onde (d'Alembert)}
+    {$\begin{gathered}
+      \text{Axe Ox : } \frac{\partial^2\xi}{\partial x^2} = \frac{1}{v^2}\,\frac{\partial^2\xi}{\partial t^2} \\
+      \text{Espace : } \nabla^2\vec\xi = \frac{1}{v^2}\,\frac{\partial^2\vec\xi}{\partial t^2}
+     \end{gathered}$}
+    {$\frac{[\xi]}{\mathrm{m}^2}$}
+    {$\xi(x,t)$ : grandeur physique portant l'onde ; $\vec\xi(x,t)$ : idem sous forme de champ vectoriel}
+  \ligne{Solution générale}
+    {$\begin{gathered}
+      \text{Progressive (sens $+x$) :} \\
+      \xi(x,t) = f(x - vt) \\
+      \text{Rétrograde (sens $-x$) :} \\
+      \xi(x,t) = f(x + vt)
+     \end{gathered}$}
+    {$[\xi]$}
+    {$x$ : position [m] ; $t$ : temps [s] ; $\xi$ : grandeur physique portant l'onde}
+  \ligne{Contrainte}
+    {$\sigma(x,t) = E\,\dfrac{\partial\xi(x,t)}{\partial x}$}
+    {Pa}
+    {$E$ : module d'élasticité}
+  \ligne{Additivité des ondes}
+    {$\xi_r(x,t) = \sum\limits_{i=1}^{N}\xi_i(x,t)$}
+    {$[\xi]$}
+    {$N$ : nombre d'ondes de même nature en $x$ ; $\xi_i$ : onde $i = 1..N$ ; $\xi_r$ : onde résultante}
+  \soustitre{Solution périodique sinusoïdale (oscillateur)}
+  \ligne{Fonction d'onde (onde de déplacement)}
+    {$\begin{gathered}
+      \xi(x,t) = \xi_0\sin(kx - \omega t + \varphi) \\
+      \cos(x) = \sin\left(\tfrac{\pi}{2} - x\right) \\
+      \sin\left(\alpha + \tfrac{\pi}{2}\right) = \cos(\alpha)
+     \end{gathered}$}
+    {$[\xi]$}
+    {$\xi_0$ : amplitude $[\xi]$ ; $\varphi$ : phase [rad] \newline
+     $v_\xi(x,t) = \dfrac{\partial}{\partial t}\,\xi(x,t)$}
+  \ligne{Nombre d'onde}
+    {$k = \dfrac{2\pi}{\lambda} = \dfrac{\omega}{v}$}
+    {m$^{-1}$}
+    {$T$ : période [s]}
+  \ligne{Longueur d'onde}
+    {$\begin{gathered}
+      \lambda = vT = \frac{v}{f} \\
+      380\,\text{nm} \le \lambda \le 780\,\text{nm}
+     \end{gathered}$}
+    {m}
+    {$f$ : fréquence [Hz]}
+  \ligne{Pulsation}
+    {$\omega = \dfrac{2\pi}{T} = 2\pi f$}
+    {rad/s}
+    {$f = \dfrac{1}{T} \Leftrightarrow T = \dfrac{1}{f}$ \newline $v = \lambda f = \dfrac{\lambda}{T}$}
+  \ligneschema{
+    \begin{scope}
+      \draw[->] (0,0) -- (2.4,0) node[right] {$x$};
+      \draw[->] (0,-0.4) -- (0,0.5) node[left] {$\xi$};
+      \draw[thick, domain=0:2.2, samples=60] plot (\x, {0.3*sin(deg(2*pi*\x/1.0))});
+      \draw[<->] (0.25,0.42) -- (1.25,0.42) node[midway, above] {$\lambda$};
+      \draw[->] (0.3,-0.48) -- (0.75,-0.48) node[midway, below] {$\vec v$};
+      \node at (2.0,-0.32) {$t$ fixe};
+    \end{scope}
+    \begin{scope}[xshift=3.3cm]
+      \draw[->] (0,0) -- (2.4,0) node[right] {$t$};
+      \draw[->] (0,-0.4) -- (0,0.5) node[left] {$\xi$};
+      \draw[thick, domain=0:2.2, samples=60] plot (\x, {-0.3*sin(deg(2*pi*\x/1.0))});
+      \draw[<->] (0.75,0.42) -- (1.75,0.42) node[midway, above] {$T$};
+      \node at (2.0,-0.32) {$x$ fixe};
+    \end{scope}
+  }
+  \soustitre{Fréquences propres}
+  \ligne{Fermé-fermé}
+    {$f_n = \dfrac{nv}{2L}$}
+    {Hz}
+    {$v$ : vitesse de propagation ; $L$ : longueur de la cavité}
+  \ligne{Fermé-ouvert}
+    {$f_n = \dfrac{(2n-1)v}{4L}$}
+    {Hz}
+    {$n$ : entier positif (1, 2, 3...)}
+  \ligne{Ouvert-ouvert}
+    {$f_n = \dfrac{nv}{2L}$}
+    {Hz}
+    {$n = 1$ : mode fondamental ; \newline $n > 1$ : harmoniques}
+  \ligne{Solution onde sinusoïdale}
+    {$\begin{gathered}
+      \text{Mode $n$ : } \xi_n(x,t) = \\
+      A_n\sin\left(\tfrac{n\pi}{L}x\right)\sin(2\pi f_nt + \varphi_n) \\
+      \text{Générale : } \xi_r(x,t) = \sum\limits_{n=1}^{\infty}\xi_n(x,t)
+     \end{gathered}$}
+    {$[\xi]$}
+    {}
+\end{formules}
+
+% ============================================================
+\subsection{Ondes stationnaires : fréquences propres}
+\begin{formules}
+  \ligne{Solution générale (séparation des variables)}
+    {$\xi(x,t) = A\sin(kx + \phi)\sin(\omega t + \varphi)$}
+    {$[\xi]$}
+    {Cavité 1D sur Ox. $L$ : longueur ; $A$ : amplitude ; $k$ : nombre d'onde ; $\omega$ : pulsation ;
+     $\phi$ : phase spatiale ; $\varphi$ : phase temporelle}
+  \ligne{Terme spatial (enveloppe)}
+    {$\xi(x) = A\sin(kx + \phi)$}
+    {$[\xi]$}
+    {}
+  \ligne{Conditions aux limites}
+    {$\begin{gathered}
+      \text{Fermé : } \xi = 0 \\
+      \text{Ouvert : } \xi = \pm A
+     \end{gathered}$}
+    {}
+    {Fermé : corde pincée, tube fermé... Ouvert : corde libre, bout de barreau, tube ouvert...}
+  \ligne{Fermé-fermé}
+    {$\begin{gathered}
+      \xi(0) = 0 \Rightarrow \sin\phi = 0 \Rightarrow \phi = 0 \\
+      \xi(L) = 0 \Rightarrow \sin(kL) = 0 \\
+      \Rightarrow kL = n\pi \Rightarrow k_n = \tfrac{n\pi}{L}, \\
+      f = \tfrac{vk}{2\pi} = \tfrac{v}{2\pi}\tfrac{n\pi}{L} \\
+      \boxed{f_n = \frac{nv}{2L}} \\
+      \boxed{\xi_n(x) = A\sin\left(\frac{n\pi}{L}x\right)}
+     \end{gathered}$}
+    {Hz}
+    {Corde de guitare, barreau solide, boîte fermée... \newline
+     $n = 1,2,3\dots$ ; $0 \le x \le L$ \newline
+     $v = \lambda f$ et $k = \frac{2\pi}{\lambda}$}
+  \ligne{Fermé-ouvert}
+    {$\begin{gathered}
+      \xi(0) = 0 \Rightarrow \phi = 0 \\
+      \xi(L) = \pm A \Rightarrow \sin(kL) = \pm1 \\
+      \Rightarrow kL = n\pi - \tfrac{\pi}{2} \\
+      \Rightarrow k_n = \left(n - \tfrac{1}{2}\right)\tfrac{\pi}{L} \\
+      f = \tfrac{vk}{2\pi} = \left(n - \tfrac{1}{2}\right)\tfrac{v}{2L} \\
+      \boxed{f_n = \frac{(2n-1)v}{4L}} \\
+      \boxed{\xi_n(x) = A\sin\left\{\left(n - \frac{1}{2}\right)\frac{\pi}{L}x\right\}}
+     \end{gathered}$}
+    {Hz}
+    {Cavité avec ouverture, verre, bouteille, flûte de pan... \newline
+     $n = 1,2,3\dots$ ; $0 \le x \le L$}
+  \ligne{Ouvert-ouvert}
+    {$\begin{gathered}
+      \xi(0) = \pm A \Rightarrow \sin\phi = \pm1 \Rightarrow \\
+      \phi = \pm\tfrac{\pi}{2} \\
+      \xi(L) = \pm A \Rightarrow \cos(kL) = \pm1 \\
+      \Rightarrow kL = n\pi \Rightarrow k_n = \tfrac{n\pi}{L} \\
+      \boxed{f_n = \frac{nv}{2L}} \\
+      \boxed{\xi_n(x) = A\cos\left(\frac{n\pi}{L}x\right)}
+     \end{gathered}$}
+    {Hz}
+    {Tube ouvert, flûte à bec, barreau solide... \newline
+     Même $f_n$ qu'en fermé-fermé ; \newline $0 \le x \le L$}
+\end{formules}
+
+% ============================================================
+\subsection{Ondes sinusoïdales : vitesse, impédance, puissance, intensité}
+{\par\scriptsize\noindent
+\renewcommand{\arraystretch}{1.5}%
+\setlength{\tabcolsep}{1pt}%
+\setlength{\lI}{0.13\columnwidth}%
+\setlength{\lT}{\dimexpr(\columnwidth-\lI-14\tabcolsep-8\arrayrulewidth)/6\relax}%
+\begin{tabular}{|>{\raggedright\arraybackslash}m{\lI}|*{6}{>{\centering\arraybackslash}m{\lT}|}}
+  \hline
+  & Milieu solide & Milieu liquide & Gaz parfait & Ressort & Corde & Onde électro\-magnétique dans le vide \\ \hline
+  & OL & OL & OL & OL & OT & OT \\ \hline
+  Rappel $\alpha$ & $E$ & $K$ & $\gamma p_a$ & $k_rL$ & $F$ & $1/\varepsilon_0$ \\ \hline
+  Inertie $\beta$ & $\rho$ & $\rho$ & $M$ & $\mu$ & $\mu$ & $\mu_0$ \\ \hline
+  Impédance \newline $\boldsymbol{\mathcal{Z} = \sqrt{\alpha\beta}}$ & $\sqrt{E\rho}$ & $\sqrt{K\rho}$ & $p_a\sqrt{\frac{\gamma M}{RT}}$ &
+    $\sqrt{k_rL\mu}$ & $\sqrt{F\mu}$ & $\sqrt{\mu_0/\varepsilon_0}$ \newline \bleu{$= 376.8\,\Omega$} \\ \hline
+  Propagation \newline $\boldsymbol{v = \sqrt{\alpha/\beta}}$ & $\sqrt{\frac{E}{\rho}} = \frac{\mathcal{Z}}{\rho}$ & $\sqrt{\frac{K}{\rho}} = \frac{\mathcal{Z}}{\rho}$ &
+    $\sqrt{\frac{\gamma RT}{M}} = \frac{\mathcal{Z}}{\rho}$ & $\sqrt{\frac{k_rL}{\mu}} = \frac{\mathcal{Z}}{\mu}$ &
+    $\sqrt{\frac{F}{\mu}} = \frac{\mathcal{Z}}{\mu}$ & $c = \frac{\mathcal{Z}}{\mu_0}$ \newline $c = \frac{1}{\sqrt{\varepsilon_0\mu_0}}$ \\ \hline
+  Amplitude & $\xi_0$ ou \newline $\sigma_0 = \mathcal{Z}\omega\xi_0$ & $\xi_0$ & $\xi_0$ ou \newline $p_0 = \mathcal{Z}\omega\xi_0$ &
+    $\xi_0$ & $\xi_0$ & $E_0$ ou $B_0$ \newline \bleu{$E_0 = c\cdot B_0$} \\ \hline
+  Puissance \newline $\bar P$ & $\frac{1}{2}S\mathcal{Z}(\omega\xi_0)^2$ & $\frac{1}{2}S\mathcal{Z}(\omega\xi_0)^2$ & $\frac{1}{2\mathcal{Z}}Sp_0^{\,2}$ &
+    $\frac{1}{2}\mathcal{Z}(\omega\xi_0)^2$ & $\frac{1}{2}\mathcal{Z}(\omega\xi_0)^2$ & $\frac{1}{2\mathcal{Z}}SE_0^{\,2}$ \\ \hline
+  Intensité \newline $\bar I$ & $\frac{1}{2}\mathcal{Z}(\omega\xi_0)^2$ & $\frac{1}{2}\mathcal{Z}(\omega\xi_0)^2$ & $\frac{1}{2\mathcal{Z}}p_0^{\,2}$ &
+    - & - & $\frac{1}{2\mathcal{Z}}E_0^{\,2}$ \\ \hline
+  Energie \newline $\bar w$ & $\frac{1}{2}\rho(\omega\xi_0)^2$ & $\frac{1}{2}\rho(\omega\xi_0)^2$ & $\frac{1}{2}\rho\left(\frac{p_0}{\mathcal{Z}}\right)^2$ &
+    \multicolumn{2}{>{\centering\arraybackslash}m{\dimexpr2\lT+2\tabcolsep+\arrayrulewidth\relax}|}{$\frac{1}{2}\mu(\omega\xi_0)^2\ \left[\frac{\mathrm{J}}{\mathrm{m}}\right]$} & $\varepsilon_0E_0^{\,2}$ \\ \hline
+\end{tabular}\par}
+{\footnotesize OL, OT : onde longitudinale, transversale. \hfill
+$\langle W_E\rangle = \overline{W_E}$ = densité d'énergie moyenne\par}
+
+\smallskip
+\noindent\begin{minipage}{\columnwidth}
+{\footnotesize\textbf{Paramètres}\par}
+{\scriptsize\noindent
+\begin{minipage}[t]{0.49\columnwidth}\raggedright
+  $\alpha$ : facteur de rétablissement \\
+  $\beta$ : facteur d'inertie \\
+  $v$ : vitesse de propagation de l'onde [m/s] \\
+  $\mathcal{Z}$ : impédance de l'onde [$\Omega$] \\
+  $\bar P$ : puissance moyenne [W] \\
+  $\bar I$ : intensité moyenne [W/m$^2$] \quad ($\bar I = \bar P/S$) \\
+  $\bar w$ : densité d'énergie moyenne [J/m$^3$] \\
+  \quad systèmes linéiques : $[\bar w]$ = J/m \\[4pt]
+  $E$ : module d'élasticité du solide [Pa] \\
+  $K$ : module de compression du liquide \ [Pa] \\
+  $\rho$ : masse volumique [kg/m$^3$] \\
+  $\mu$ : masse linéique [kg/m] \\
+  $k_r$ : constante de rappel du ressort [N/m] \\
+  $L$ : longueur du ressort [m] \\
+  $F$ : tension exercée sur la corde [N] \\
+  $T$ : température du gaz [K]
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\columnwidth}\raggedright
+  $\gamma$ : exposant adiabatique \\
+  \quad \bleu{$\gamma = 5/3$ monoatomique} \\
+  \quad \bleu{$\gamma = 7/5$ diatomique} \\
+  \quad \bleu{$\gamma = 4/3$ triatomique ou plus} \\
+  $p_a$ : pression du gaz [Pa] \\
+  $M$ : masse molaire du gaz [kg/mol] \\
+  \qquad Air sec : \bleu{$\boldsymbol{M = 0.028\,964\,4}$ $\frac{\mathrm{kg}}{\mathrm{mol}}$} \\
+  $R$ : constante des gaz parfaits [J/(mol$\cdot$K)] \\
+  \qquad \bleu{$\boldsymbol{R = 8.314\,462\,618\,153\,24}$ $\frac{\mathrm{J}}{\mathrm{mol\cdot K}}$} \\
+  $\xi_0$ : déplacement des atomes, des molécules [m] \\
+  $\sigma_0$ : contrainte [Pa] \\
+  $p_0$ : pression acoustique [Pa] \\
+  $S$ : surface du front d'onde [m$^2$] \\
+  $\varepsilon_0$ : permittivité du vide [As/(Vm)] \\
+  $\mu_0$ : perméabilité du vide [VS/(Am)] $= 4\pi\cdot10^{-7}$ \\
+  $c$ : vitesse de la lumière dans le vide [m/s]
+\end{minipage}\par}
+\end{minipage}\par\medskip
+
+\begin{formules}[sans]
+  \ligne{Exposant adiabatique}
+    {$\begin{gathered}
+      \gamma = \frac{C_p}{C_v} = \frac{\chi_T}{\chi_S} \\
+      \gamma = \frac{i+2}{i}
+     \end{gathered}$}
+    {[--]}
+    {$i = 3$ monoatomique : \bleu{$\gamma = 5/3$} \newline
+     $i = 5$ diatomique : \bleu{$\gamma = 7/5$} \newline
+     $i = 6$ triatomique ou plus : \bleu{$\gamma = 4/3$}}
+  \ligne{Module de compression}
+    {$K = \dfrac{1}{\chi}$}
+    {Pa}
+    {$\chi$ : compressibilité}
+  \ligne{Masse linéique}
+    {$\mu = \dfrac{m}{L}$}
+    {kg/m}
+    {}
+  \ligne{CNTP}
+    {$\begin{gathered}
+      T = 0\,^\circ\text{C} = 273\,\text{K} \\
+      P = 1013\cdot10^2\,\text{Pa}
+     \end{gathered}$}
+    {}
+    {}
+\end{formules}
+
+% ============================================================
+\subsection{Réflexion -- transmission}
+\begin{formules}
+  \soustitre{Amplitude}
+  \ligne{Facteur de réflexion}
+    {$\begin{gathered}
+      \text{Méca : } R = \frac{\xi_{0r}}{\xi_{0i}} = \frac{\mathcal{Z}_1 - \mathcal{Z}_2}{\mathcal{Z}_1 + \mathcal{Z}_2} \\
+      \text{OEM : } R = \frac{E_{0r}}{E_{0i}} = \frac{\mathcal{Z}_2 - \mathcal{Z}_1}{\mathcal{Z}_1 + \mathcal{Z}_2}
+     \end{gathered}$}
+    {1}
+    {Passage d'un milieu 1 à un milieu 2 \newline
+     $\xi_{0i}, E_{0i}$ : amplitude incidente ; $\xi_{0r}, E_{0r}$ : réfléchie ; $\xi_{0t}, E_{0t}$ : transmise}
+  \ligne{Facteur de transmission}
+    {$\begin{gathered}
+      \text{Méca : } T = \frac{\xi_{0t}}{\xi_{0i}} = \frac{2\mathcal{Z}_1}{\mathcal{Z}_1 + \mathcal{Z}_2} \\
+      \text{OEM : } T = \frac{E_{0t}}{E_{0i}} = \frac{2\mathcal{Z}_2}{\mathcal{Z}_1 + \mathcal{Z}_2}
+     \end{gathered}$}
+    {1}
+    {$\mathcal{Z}_1, \mathcal{Z}_2$ : impédances des milieux 1 et 2 \newline
+     $1 + R = T$ ; $T > 0$ ; \newline $-1 < R < 1$}
+  \soustitre{Intensité, puissance}
+  \ligne{Facteur de réflexion}
+    {$R_e = \left(\dfrac{\mathcal{Z}_1 - \mathcal{Z}_2}{\mathcal{Z}_1 + \mathcal{Z}_2}\right)^2$}
+    {1}
+    {$R_e + T_e = 1$}
+  \ligne{Facteur de transmission}
+    {$T_e = \dfrac{4\mathcal{Z}_1\mathcal{Z}_2}{(\mathcal{Z}_1 + \mathcal{Z}_2)^2}$}
+    {1}
+    {$R_e, T_e > 0$}
+\end{formules}
+
+% ============================================================
+\subsection{Effet Doppler}
+\begin{formules}
+  \ligne{Fréquences apparentes}
+    {$\begin{gathered}
+      \text{Ondes mécaniques :} \\
+      f_{obs} = f_{em}\,\frac{v - v_{obs}}{v - v_{em}} \\
+      \text{Ondes électromagnétiques :} \\
+      f_{obs} = f_{em}\sqrt{\frac{c - V}{c + V}} \\
+      = f_{em}\sqrt{\frac{1 - \beta}{1 + \beta}} \\
+      \beta = \frac{V}{c} \\
+      \frac{\lambda_{obs}}{\lambda_{em}} = \frac{f_{em}}{f_{obs}} = \sqrt{\frac{1 + \beta}{1 - \beta}}
+     \end{gathered}$}
+    {Hz}
+    {$f_{obs}$ : fréquence perçue par l'observateur O ; $f_{em}$ : fréquence émise par l'émetteur E ;
+     $\vec v$ : vitesse de l'onde ; $\vec v_{obs}$ : vitesse de l'observateur ; $\vec v_{em}$ : vitesse de l'émetteur ;
+     $\vec V = \vec v_{obs} - \vec v_{em}$ : vitesse relative de l'observateur par rapport à l'émetteur ;
+     $\vec c$ : vitesse de la lumière
+     \schema{
+      \draw[->, gray] (-0.1,0) -- (1.9,0);
+      \fill (0,0) circle (1pt) node[below] {E};
+      \fill (1.5,0) circle (1pt) node[below] {O};
+      \draw[->, champ] (0,0.12) -- (0.45,0.12) node[midway, above] {$\vec v_{em}$};
+      \draw[->, champ] (1.5,0.12) -- (1.9,0.12) node[midway, above] {$\vec v_{obs}$};
+      \draw[->, blue!70!black] (0.55,0.35) -- (1.15,0.35) node[midway, above] {$\vec v, \vec c$};
+     }
+     $v, v_{obs}, v_{em}, V, c$ : projections sur l'axe EO}
+\end{formules}
+
+% ============================================================
+\subsection{Décibel}
+\begin{formules}
+  \ligne{Intensité moyenne en décibel}
+    {$I_{dB} = 10\log_{10}\dfrac{\bar I}{I_{ref}}$}
+    {dB}
+    {$\bar I$ : intensité moyenne ; $I_{ref}$ : intensité de référence. dB acoustique : \newline
+     $I_{ref} = 10^{-12}$ W/m$^2$}
+\end{formules}
+
+% ============================================================
+\subsection{Générale ondes}
+\begin{formules}
+  \ligne{Intensité instantanée}
+    {$I(x,t) = \dfrac{\partial P(x,t)}{\partial S}$}
+    {W/m$^2$}
+    {}
+  \ligne{Puissance instantanée}
+    {$P(x,t) = \displaystyle\int_S \vec I(x,t)\cdot d\vec S$}
+    {W}
+    {Si $I$ uniforme et $\perp$ à $S$ : \newline $P(x,t) = S\cdot I(x,t)$}
+\end{formules}
+
+% ============================================================
+\subsection{Ondes mécaniques : barreau}
+\begin{formules}
+  \ligne{Puissance}
+    {$\begin{gathered}
+      P(x,t) = \\
+      S\sqrt{E\rho}\,\omega^2\xi_0^2\cos^2(kx - \omega t)
+     \end{gathered}$}
+    {W}
+    {$S$ : section du barreau}
+  \ligne{Puissance moyenne (onde plane élastique)}
+    {$\bar P = \dfrac{S}{2}\sqrt{E\rho}\,\omega^2\xi_0^2$}
+    {W}
+    {}
+  \ligne{Intensité instantanée}
+    {$\begin{gathered}
+      I(x,t) = \\
+      \sqrt{E\rho}\,\omega^2\xi_0^2\cos^2(kx - \omega t) \\
+      I = \frac{P}{S}
+     \end{gathered}$}
+    {W/m$^2$}
+    {}
+  \ligne{Intensité moyenne}
+    {$\bar I = \dfrac{1}{2}\sqrt{E\rho}\,\omega^2\xi_0^2 = \dfrac{\bar P}{S}$}
+    {W/m$^2$}
+    {}
+  \ligne{Densité d'énergie instantanée}
+    {$w = \xi_0^2\,\rho\,\omega^2\cos^2(kx - \omega t)$}
+    {J/m$^3$}
+    {}
+  \ligne{Densité d'énergie moyenne}
+    {$\bar w = \dfrac{1}{2}\rho\,\omega^2\xi_0^2$}
+    {J/m$^3$}
+    {}
+  \ligne{Puissance onde plane}
+    {$\begin{gathered}
+      P(x,t) = \\
+      ESk\omega\xi_0^2\cos^2(kx - \omega t)
+     \end{gathered}$}
+    {W}
+    {}
+\end{formules}
+
+% ============================================================
+\subsection{Ondes sonores}
+\begin{formules}
+  \ligne{Intensité de référence}
+    {$I_{ref} = 10^{-12}$ W/m$^2$}
+    {W/m$^2$}
+    {Seuil d'audition. Seuil de douleur : $I_d = 1$ W/m$^2$}
+  \ligne{Intensité en dB}
+    {$I_{dB} = 10\log_{10}\dfrac{\bar I}{I_{ref}}$}
+    {dB}
+    {}
+  \ligne{Surpression}
+    {$\begin{gathered}
+      p(x,t) = p_0\sin(kx - \omega t) \\
+      = -\rho v^2\,\frac{\partial\xi(x,t)}{\partial x}
+     \end{gathered}$}
+    {Pa}
+    {}
+  \ligne{Pression dynamique (amplitude de pression)}
+    {$\begin{gathered}
+      p_0 = \sqrt{2\mathcal{Z}\bar I} = \rho v\omega\xi_0 \\
+      = \mathcal{Z}\omega\xi_0 = \rho v^2k\xi_0
+     \end{gathered}$}
+    {Pa}
+    {Pour une onde progressive, la pression acoustique est déphasée de $\pi/2$ par rapport au déplacement}
+  \ligne{Onde sonore plane}
+    {$\begin{gathered}
+      P_{tot}(x,t) = \\
+      P_{atm} + p_0\sin(kx - \omega t + \phi)
+     \end{gathered}$}
+    {Pa}
+    {$P_{tot}$ : pression totale}
+  \ligne{Onde sonore sphérique}
+    {$\begin{gathered}
+      P_{tot}(r,t) = \\
+      P + \sqrt{\frac{\mathcal{Z}\bar P_0}{2\pi}}\,\frac{\sin(kr - \omega t + \phi)}{r}
+     \end{gathered}$}
+    {Pa}
+    {$\bar P_0$ : puissance moyenne de la source}
+  \ligne{Intensité moyenne (onde acoustique plane)}
+    {$\bar I = \dfrac{1}{2}\rho v\omega^2\xi_0^2 = \dfrac{\bar P}{S}$}
+    {W/m$^2$}
+    {Source sphérique : $S = 4\pi r^2$}
+  \ligne{Densité d'énergie moyenne}
+    {$\bar w = \dfrac{1}{2}\rho\,\omega^2\xi_0^2 = \dfrac{\bar I}{v}$}
+    {J/m$^3$}
+    {}
+\end{formules}
+
+% ============================================================
+\subsection{Onde électromagnétique}
+\begin{formules}
+  \ligne{Densités d'énergie moyennes}
+    {$\begin{gathered}
+      \bar w_E = \frac{1}{4}\varepsilon_0E^2 \quad \bar w_B = \frac{B^2}{4\mu_0} \\
+      \bar w = \bar w_E + \bar w_B
+     \end{gathered}$}
+    {J/m$^3$}
+    {$E, B$ : amplitudes des champs}
+  \ligne{Densités d'énergie instantanées}
+    {$\begin{gathered}
+      w_E = \frac{1}{2}\varepsilon_0E^2 \quad w_B = \frac{B^2}{2\mu_0} \\
+      w = w_E + w_B
+     \end{gathered}$}
+    {J/m$^3$}
+    {}
+  \ligne{Pression de radiation}
+    {$\begin{gathered}
+      \text{Isotrope : } P_{rad} = \tfrac{1}{3}\chi w \\
+      \text{Plan : } P_{rad} = \chi w \\
+      \text{Force : } F = S\cdot P_{rad}
+     \end{gathered}$}
+    {Pa \newline\newline N}
+    {Isotrope : toutes directions ; plan : une direction ; $F$ : force transmise par l'onde à la surface.
+     $\chi$ : coefficient lié à la surface : tout absorbé $= 1$, tout réfléchi $= 2$, absorption/réflexion $= 1.5$}
+  \ligne{Vecteur de Poynting}
+    {$\vec R = \dfrac{\vec E\wedge\vec B}{\mu_0} \quad \bar I = \dfrac{1}{2}R_0$}
+    {W/m$^2$}
+    {$\vec E\perp\vec B \to$ onde électromagnétique ; $R_0$ : amplitude de $R$}
+\end{formules}

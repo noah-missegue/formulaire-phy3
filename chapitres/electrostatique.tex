@@ -1,0 +1,350 @@
+\section{ÉLECTROSTATIQUE}
+
+% ============================================================
+\subsection{Charge électrique}
+\begin{formules}
+  \ligne{Charge électrique}
+    {$q,\ e,\ Q$}
+    {C}
+    {Charge élémentaire : \newline $e = 1.602\,176\,634\times10^{-19}$\,C}
+  \ligne{Permittivité}
+    {$\varepsilon = \varepsilon_r\varepsilon_0$}
+    {F/m}
+    {$\varepsilon_0$ : permittivité du vide \newline
+     $\varepsilon_0 = 8.854187\times10^{-12}\ \frac{\mathrm{A\cdot s}}{\mathrm{V\cdot m}}$ \newline
+     $\varepsilon_r$ : permittivité relative (constante diélectrique), \newline
+     $[\varepsilon_r] = 1$ ; vide : $\varepsilon_r = 1$}
+  \ligne{Matériau diélectrique (linéaire, isotrope, homogène)}
+    {$\varepsilon_r = 1 + \chi_e$}
+    {[--]}
+    {$\chi_e$ : susceptibilité électrique \newline [--]}
+  \ligne{Loi de Coulomb}
+    {$\begin{gathered}
+      \text{Scalaire : } F_{12} = \frac{1}{4\pi\varepsilon}\,\frac{q_1q_2}{r_{12}^2} \\
+      \text{Vectorielle :} \\
+      \vec F_{12} = \frac{1}{4\pi\varepsilon}\,\frac{q_1q_2}{r_{12}^2}\,\frac{\vec r_{12}}{r_{12}} \\
+      \vec F_{12} = \frac{1}{4\pi\varepsilon}\,\frac{q_1q_2}{r_{12}^3}\,\vec r_{12} \\
+      \textcolor{red}{\scriptstyle F_{12}\ :\ 1\,=\,\text{émet},\ 2\,=\,\text{subit}}
+     \end{gathered}$}
+    {N}
+    {\schema{
+      \node at (0.4,0.62) {même signe};
+      \fill (0,0) circle (0.9pt) node[below] {$q_1$};
+      \draw[->] (0,0) -- (0.48,0.24) node[midway, above left] {$\vec r_{12}$};
+      \fill (0.5,0.25) circle (0.9pt) node[below right] {$q_2$};
+      \draw[->, red, thick] (0.5,0.25) -- (0.85,0.43) node[right, red] {$\vec F_{12}$};
+      \node at (1.95,0.62) {signes opposés};
+      \fill (1.55,0) circle (0.9pt) node[below] {$q_1$};
+      \draw[->] (1.55,0) -- (2.03,0.24);
+      \fill (2.05,0.25) circle (0.9pt) node[right] {$q_2$};
+      \draw[->, red, thick] (2.05,0.25) -- (1.8,0.125);
+      \node[red] at (1.95,-0.02) {$\vec F_{12}$};
+     }
+     $q_1, q_2$ : charges ; $\vec F_{12}$ : force de Coulomb exercée par $q_1$ sur $q_2$ ;
+     $\vec r_{12}/r_{12}$ : vecteur unitaire. Sens donné par le signe de $q_1q_2$ :
+     $q_1q_2 > 0$ répulsion, $q_1q_2 < 0$ attraction}
+  \ligne{Densité linéique}
+    {$\lambda = \dfrac{q}{\ell}$}
+    {C/m}
+    {$\ell$ : longueur}
+  \ligne{Densité surfacique}
+    {$\sigma = \dfrac{q}{S}$}
+    {C/m$^2$}
+    {$S$ : surface}
+  \ligne{Densité volumique}
+    {$\rho = \dfrac{q}{V}$}
+    {C/m$^3$}
+    {$V$ : volume}
+\end{formules}
+
+% ============================================================
+\subsection{Champ électrique}
+\begin{formules}
+  \ligne{Champ électrique}
+    {$\vec F = q\vec E$}
+    {N}
+    {$\vec E$ : champ électrique ; $q$ : charge plongée dans $\vec E$ ; $\vec F$ : force exercée sur $q$}
+  \soustitre{Champs électriques particuliers}
+  \ligne{Intérieur d'un conducteur}
+    {$E = 0$}
+    {V/m}
+    {}
+  \ligne{Charge ponctuelle ou conducteur sphérique}
+    {$\begin{gathered}
+      \text{Scalaire : } E = \frac{1}{4\pi\varepsilon}\,\frac{q}{r^2} \\
+      \text{Vectorielle :} \\
+      \vec E = \frac{1}{4\pi\varepsilon}\,\frac{q}{r^2}\,\frac{\vec r}{r} \\
+      \vec E = \frac{1}{4\pi\varepsilon}\,\frac{q}{r^3}\,\vec r \\
+      \text{Condition : } r > R
+     \end{gathered}$}
+    {V/m}
+    {\schema{
+      \fill (0,0) circle (1pt) node[below] {$q > 0$};
+      \draw[->] (0,0) -- (0.65,0.23) node[midway, above] {$\vec r$};
+      \fill (0.67,0.24) circle (0.8pt) node[below right] {P};
+      \draw[->, champ, thick] (0.67,0.24) -- (1.15,0.41) node[right] {$\vec E$};
+      \node[anchor=west] at (0.75,-0.02) {sens opposé si $q < 0$};
+     }
+     $\vec E$ : champ créé par la charge $q$ au point P ; $R$ : rayon de la sphère}
+  \ligne{Ensemble de charges ponctuelles}
+    {$\vec E = \sum \vec E_i$}
+    {V/m}
+    {$\vec E$ : champ résultant de la somme des champs $\vec E_i$}
+  \ligne{Conducteur cylindrique}
+    {$\begin{gathered}
+      E = \frac{1}{2\pi\varepsilon}\,\frac{Q}{rh} \\
+      \text{Condition : } r > R
+     \end{gathered}$}
+    {V/m}
+    {\schema{
+      \draw[<->] (0,0.62) -- (1.6,0.62) node[midway, above] {$h$};
+      \draw (0,0.42) -- (0,0.66) (1.6,0.42) -- (1.6,0.66);
+      \draw (0.05,0.1) -- (1.55,0.1) (0.05,0.38) -- (1.55,0.38);
+      \draw (0.05,0.24) ellipse (0.06 and 0.14);
+      \draw (1.55,0.24) ellipse (0.06 and 0.14);
+      \node at (0.8,0.24) {$Q > 0$};
+      \draw (0.8,0.1) -- (0.8,-0.25);
+      \fill (0.8,-0.25) circle (0.8pt) node[left] {P};
+      \draw[->, champ, thick] (0.8,-0.25) -- (0.8,-0.75) node[right] {$\vec E$};
+     }
+     $\vec E$ : champ créé par le cylindre au point P ; $h$ : hauteur du cylindre ;
+     $R$ : rayon du cylindre. Effets de bord négligés (cylindre infini). Sens opposé si $Q < 0$}
+  \ligne{Conducteur plan}
+    {$E = \dfrac{1}{2\varepsilon}\,\dfrac{Q}{S}$}
+    {V/m}
+    {\schema{
+      \draw[fill=gray!8] (0,0) -- (0.3,0.22) -- (0.3,1.0) -- (0,0.78) -- cycle;
+      \node at (0.1,0.7) {$S$};
+      \draw[->, champ, thick] (0.2,0.5) -- (1.0,0.5) node[right] {$\vec E$};
+      \node[anchor=west] at (-0.05,-0.12) {$Q > 0$};
+      \node[anchor=west] at (0.75,-0.12) {sens opposé si $Q < 0$};
+     }
+     $\vec E$ : champ créé par le plan en tous points ; $S$ : surface du plan.
+     Effets de bord négligés (plan infini)}
+  \ligne{Entre deux conducteurs plans}
+    {$E = \dfrac{1}{\varepsilon}\,\dfrac{Q}{S}$}
+    {V/m}
+    {\schema{
+      \fill[champ!12] (0.66,0) rectangle (1.44,0.9);
+      \draw[fill=gray!25] (0.58,0) rectangle (0.66,0.9);
+      \draw[fill=gray!25] (1.44,0) rectangle (1.52,0.9);
+      \foreach \y in {0.15,0.35,0.55,0.75} \draw[->, champ] (0.7,\y) -- (1.4,\y);
+      \node[champ] at (1.05,1.02) {$\vec E$};
+      \node at (0.3,0.75) {$E\!=\!0$};
+      \node at (1.82,0.75) {$E\!=\!0$};
+      \node[below] at (0.62,0) {$+Q$};
+      \node[below] at (1.48,0) {$-Q$};
+     }
+     $S$ : surface de recouvrement des deux plans. Effets de bord négligés (plans infinis)}
+  \ligne{Champ de déplacement}
+    {$\begin{gathered}
+      \vec D = \varepsilon\vec E \\
+      D = \varepsilon E = \frac{Q}{S}
+     \end{gathered}$}
+    {C/m$^2$}
+    {$\vec D$ : champ de déplacement ou induction électrique}
+  \ligne{Flux élémentaire}
+    {$\vec E\cdot d\vec A = E\,dS\cos\theta$}
+    {}
+    {$\theta$ : angle entre $\vec E$ et la normale $d\vec A$}
+  \ligne{Théorème de Gauss}
+    {$\begin{gathered}
+      \oiint_S \vec E\cdot d\vec S = \frac{1}{\varepsilon}\sum_i q_i = \frac{Q_{int}}{\varepsilon_0} \\
+      = \frac{1}{\varepsilon}\iiint_V \rho\,dV \\
+      \text{Loi locale : } \vec\nabla\cdot\vec E = \frac{\rho}{\varepsilon} \\
+      \vec E = -\vec\nabla V
+     \end{gathered}$}
+    {}
+    {\schema{
+      \draw (1.1,0.1) circle (0.42);
+      \node at (1.25,0.3) {$V,\ \rho$};
+      \draw[fill=white, rotate around={45:(0.8,0.4)}] (0.74,0.34) rectangle (0.86,0.46);
+      \draw[->, thick] (0.8,0.4) -- (0.42,0.62) node[left] {$d\vec S$};
+      \draw[->, champ, thick] (0.8,0.4) -- (0.55,0.05) node[left] {$\vec E$};
+     }
+     $S$ : surface fermée ; $d\vec S$ : élément de surface ; $q_i$ : charges contenues dans $S$ ;
+     $V$ : volume contenu dans $S$ ; $\rho$ : densité de charges dans $V$ ; $\vec\nabla$ : opérateur nabla}
+  \ligne{Coordonnées cylindriques}
+    {$\begin{gathered}
+      x = r\cos(\theta) \\
+      y = r\sin(\theta) \qquad dS = r\,dz\,d\theta \\
+      z = z
+     \end{gathered}$}
+    {}
+    {}
+  \ligne{Coordonnées sphériques}
+    {$\begin{gathered}
+      x = \rho\cos(\theta)\sin(\varphi) \\
+      y = \rho\sin(\theta)\sin(\varphi) \\
+      z = \rho\cos(\varphi) \\
+      dS = \rho^2\sin(\varphi)\,d\varphi\,d\theta
+     \end{gathered}$}
+    {}
+    {}
+\end{formules}
+
+% ============================================================
+\subsection{Potentiel}
+\begin{formules}
+  \ligne{Loi générale}
+    {$\begin{gathered}
+      V = -\int_O^P \vec E\cdot d\vec r \\
+      V_B - V_A = -\int_A^B \vec E\cdot d\vec r \\
+      \lim_{r\to+\infty} V(r) = 0
+     \end{gathered}$}
+    {V}
+    {$V$ : potentiel au point P ; O : référence des potentiels ; $d\vec r$ : élément de parcours de O à P}
+  \ligne{Loi locale}
+    {$\vec E = -\vec\nabla V$}
+    {V/m}
+    {}
+  \ligne{Équipoten\-tielles}
+    {Cercles (sphères) au même potentiel autour de $q$}
+    {}
+    {\schema{
+      \draw[blue!60, dashed] (0,0) circle (0.28);
+      \foreach \a in {0,45,...,315} \draw[->, champ] (\a:0.06) -- (\a:0.45);
+      \fill (0,0) circle (1pt);
+      \node[blue!70, anchor=west] at (0.55,0.15) {équipot.};
+      \node[champ, anchor=west] at (0.55,-0.12) {ligne champ};
+     }
+     Lignes de champ $\perp$ équipotentielles}
+  \ligne{Potentiel d'une charge ponctuelle}
+    {$V = \dfrac{1}{4\pi\varepsilon}\,\dfrac{q}{r}$}
+    {V}
+    {$r$ : distance de $q$ au point P}
+  \ligne{Tension ou différence de potentiel}
+    {$\begin{gathered}
+      U_{AB} = V_A - V_B = \int_A^B \vec E\cdot d\vec r \\
+      \text{Plans : } U = \frac{q}{S}\,\frac{d}{\varepsilon_0}
+     \end{gathered}$}
+    {V}
+    {$U_{AB}$ : tension entre les points A et B}
+  \ligne{Travail}
+    {$\begin{gathered}
+      W_{AB} = qU_{AB} \\
+      W = \vec F\cdot\vec d \quad W = Fx + Uq
+     \end{gathered}$}
+    {J}
+    {$W_{AB}$ : travail à fournir à la charge $q$ pour la déplacer du point A au point B}
+  \ligne{Énergie potentielle}
+    {$E_p = QV$}
+    {J}
+    {}
+\end{formules}
+
+% ============================================================
+\subsection{Capacité}
+\begin{formules}
+  \ligne{Capacité conducteur}
+    {$C = \dfrac{Q}{V}$}
+    {F}
+    {$Q$ : charge du conducteur ; $V$ : potentiel du conducteur}
+  \ligne{Capacité condensateur}
+    {$C = \dfrac{Q}{U} \qquad Q = CU$}
+    {F \newline C}
+    {$Q$ : charge des armatures ($Q_+ = Q$, $Q_- = -Q$) ; $U$ : tension entre les armatures}
+  \soustitre{Capacités de condensateurs particuliers}
+  \ligne{Condensateur plan}
+    {$C = \varepsilon\dfrac{S}{d}$}
+    {F}
+    {$S$ : surface de recouvrement des armatures ; $d$ : distance entre les armatures}
+  \ligne{Condensateur sphérique}
+    {$C = 4\pi\varepsilon\dfrac{1}{\frac{1}{r_1} - \frac{1}{r_2}}$}
+    {F}
+    {$r_1, r_2$ : rayons des sphères concentriques ($r_1 < r_2$)}
+  \ligne{Sphère seule}
+    {$C = 4\pi\varepsilon R$}
+    {F}
+    {$R$ : rayon de la sphère}
+  \ligne{Condensateur cylindrique}
+    {$C = 2\pi\varepsilon\dfrac{h}{\ln\frac{r_2}{r_1}}$}
+    {F}
+    {$r_1, r_2$ : rayons des cylindres concentriques ($r_1 < r_2$) ; $h$ : hauteur en vis-à-vis}
+  \ligne{Ligne bifilaire}
+    {$C = \dfrac{\pi\varepsilon L}{\ln\left(\frac{2d}{a} - 1\right)}$}
+    {F}
+    {$L$ : longueur de la ligne ; $d$ : distance entre les centres des fils ; $a$ : diamètre des fils}
+  \soustitre{Combinaison de capacités}
+  \ligne{En série}
+    {$\dfrac{1}{C} = \sum\limits_i \dfrac{1}{C_i}$}
+    {F}
+    {}
+  \ligne{En parallèle}
+    {$C = \sum\limits_i C_i$}
+    {F}
+    {}
+  \ligne{Énergie dans un condensateur}
+    {$W = \frac{1}{2}CU^2$}
+    {J}
+    {}
+  \ligne{Densité d'énergie électrique}
+    {$w = \frac{1}{2}\varepsilon E^2 = \dfrac{W}{\text{Volume}}$}
+    {J/m$^3$}
+    {}
+\end{formules}
+
+% ============================================================
+\subsection{Dipôle électrique}
+\begin{formules}
+  \ligne{Moment dipolaire}
+    {$\vec p = q\vec d$}
+    {C\,m}
+    {\schema{
+      \fill (0,0) circle (1pt) node[below] {$-q$};
+      \draw[->, thick, blue!70!black] (0,0) -- (1.0,0.25) node[midway, above] {$\vec d$};
+      \fill (1.02,0.255) circle (1pt) node[right] {$+q$};
+     }
+     $q$ : charge du dipôle ; $\vec d$ : de la charge négative à la positive}
+  \ligne{Couple dans un champ $\vec E$}
+    {$\vec M = \vec p\times\vec E$}
+    {N\,m}
+    {}
+  \ligne{Énergie potentielle}
+    {$W = \vec p\cdot\vec E$}
+    {J}
+    {Par convention, $W$ nulle quand $\vec d\perp\vec E$}
+\end{formules}
+
+% ============================================================
+\subsection{Applications}
+\begin{formules}
+  \ligne{Barreau rectiligne infini uniformément chargé}
+    {$\begin{gathered}
+      E(r) = \frac{\lambda}{2\pi\varepsilon_0 r} \\
+      \varepsilon = \varepsilon_0\varepsilon_r
+     \end{gathered}$}
+    {V/m}
+    {Champ à une distance $r$ du barreau ; $\lambda$ : densité linéique}
+  \ligne{Plaque infinie uniformément chargée}
+    {$E = \dfrac{\sigma}{2\varepsilon_0}$}
+    {V/m}
+    {Ne dépend pas de la distance à la plaque !}
+  \ligne{Condensateur plan}
+    {$E = \dfrac{\sigma}{\varepsilon} = \dfrac{U}{d}$}
+    {V/m}
+    {Champ entre les armatures}
+  \ligne{Polarisation}
+    {$P = \chi_e\,\varepsilon_0\,E$}
+    {C/m$^2$}
+    {$\chi_e$ : susceptibilité électrique}
+  \ligne{Rigidité diélectrique}
+    {$E_{max}$}
+    {V/m}
+    {Champ maximal avant claquage du diélectrique}
+  \ligne{Fil semi-fin}
+    {$\begin{gathered}
+      \vec E = \frac{1}{4\pi\varepsilon_0}\,\frac{q}{r^3}\,\vec r \\
+      = \frac{1}{4\pi\varepsilon_0}\,\frac{q}{(x^2+y^2)^{3/2}}\begin{pmatrix}-x\\ y\end{pmatrix}
+     \end{gathered}$}
+    {}
+    {}
+  \ligne{Déplacement dans un champ}
+    {$\begin{gathered}
+      y(t) = \frac{1}{2}at^2 + v_0t + y_0 \\
+      \vec F = q\vec E = m\vec a \ \Rightarrow\ a = \frac{qE}{m} \\
+      v(t) = at + v_0
+     \end{gathered}$}
+    {}
+    {}
+\end{formules}
