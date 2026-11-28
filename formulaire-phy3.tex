@@ -32,6 +32,8 @@
 \usepackage{titlesec}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
+\usepackage{graphicx}
+\graphicspath{{images/}{images/magnetisme/}}
 
 \definecolor{stabibleu}{RGB}{204,233,248}   % surlignage des titres
 \definecolor{grisclair}{gray}{0.90}         % en-tête et sous-titres des tableaux
@@ -39,6 +41,9 @@
 \colorlet{champ}{orange!90!red}             % champs E dans les schémas
 \newcommand{\bleu}[1]{\textcolor{bleutexte}{#1}}
 \newcommand{\rouge}[1]{\textcolor{red}{#1}}
+\definecolor{lavande}{RGB}{219,214,226}     % lignes surlignées (magnétisme)
+\definecolor{bleumu}{RGB}{68,112,180}       % valeur de mu_0
+\definecolor{brunmu}{RGB}{150,80,40}        % « ou constante magnétique »
 
 % ---------- Surlignage (effet stabilo) ----------
 \newcommand{\stabilo}[1]{%
@@ -60,7 +65,10 @@
 %     \soustitre{Sous-titre dans le tableau}
 %     \ligneschema{code tikz}   (schéma sur toute la largeur)
 %   \end{formules}
-%  Dans les remarques : \schema{code tikz}
+%     \lignecouleur{...}{...}{...}{...}  (ligne surlignée lavande)
+%     \lignepleine{texte}       (ligne sur toute la largeur)
+%     \note{texte}              (note de bas de tableau, toute la largeur)
+%  Dans les remarques : \schema{code tikz} ou \image{nom}
 %  Chaque ligne est un petit tableau : le tableau peut continuer
 %  dans la colonne suivante (pas de vide).
 % ============================================================
@@ -81,6 +89,15 @@
 \newcommand{\suite}{\vspace{-\arrayrulewidth}}
 \newcommand{\collee}{\nopagebreak\vspace{-\arrayrulewidth}\nopagebreak}
 \newcommand{\ligne}[4]{\rangee{#1 & #2 & #3 & #4}\suite}
+\newcommand{\lignecouleur}[4]{\rangee{\rowcolor{lavande}#1 & #2 & #3 & #4}\suite}
+\newcommand{\note}[1]{%
+  \par\nointerlineskip\noindent
+  \begin{tabular}{|L{\lT}|}\hline\scriptsize #1 \\ \hline\end{tabular}\par\suite}
+\newcommand{\lignepleine}[1]{%
+  \par\nointerlineskip\noindent
+  \begin{tabular}{|L{\lT}|}\hline #1 \\ \hline\end{tabular}\par\suite}
+\newcommand{\image}[2][0.95\linewidth]{%
+  \par\vspace{1pt}{\centering\includegraphics[width=#1]{#2}\par}\vspace{1pt}}
 \newcommand{\soustitre}[1]{%
   \par\nointerlineskip\noindent
   \begin{tabular}{|L{\lT}|}\hline\rowcolor{grisclair}\textbf{#1} \\ \hline\end{tabular}\par\collee}
@@ -106,6 +123,7 @@
 
 \input{chapitres/electrostatique}
 \input{chapitres/ondes}
+\input{chapitres/magnetisme}
 
 \end{multicols*}
 \end{document}

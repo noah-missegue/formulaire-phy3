@@ -1,0 +1,288 @@
+\section{MAGNÉTISME}
+
+% ============================================================
+%  Page 11 — Magnétostatique
+% ============================================================
+\subsection{Magnétostatique}
+\begin{formules}
+  \ligne{Champ magnétique$^*$}
+    {$\vec B$}
+    {T}
+    {Champ d'induction magnétique}
+  \lignecouleur{Champ magnétique$^*$}
+    {$\vec H = \dfrac{\vec B}{\mu}$}
+    {A/m}
+    {Champ d'excitation magnétique (indépendant du milieu)}
+  \ligne{Champ magnétique$^*$}
+    {Dans la matière : \newline $\vec B = \mu_r\vec B_0$}
+    {T}
+    {$\vec B_0$ : champ magnétique dans le vide}
+  \note{$^*$ Dans le langage courant, le terme « champ magnétique » désigne $\vec B$.
+        Cependant, dans certains domaines des sciences et techniques il désigne $\vec H$ !}
+  \ligne{Perméabilité}
+    {$\mu = \mu_r\mu_0$}
+    {$\frac{\mathrm{V\cdot s}}{\mathrm{A\cdot m}}$}
+    {$\mu_r$ : perméabilité relative \textcolor{brunmu}{ou constante magnétique} ($[\mu_r] = 1$) \newline
+     Vide : $\mu_r = 1$ \newline
+     \textcolor{bleumu}{$\boldsymbol{\mu_0 = 1.2563706212(19)}$ \newline
+     \hspace*{\fill}$\boldsymbol{\times10^{-6}\ \frac{N}{A^2}}$} \newline
+     \hspace*{\fill}\textcolor{bleumu}{$\boldsymbol{\mu_0 \approx 4\pi\times10^{-7}\ \frac{N}{A^2}}$}}
+  \ligne{Champ magnétique dans la matière}
+    {$\vec B = \mu_r\vec B_0$}
+    {T}
+    {$\vec B_0$ : champ magnétique dans le vide}
+  \ligne{Loi de Biot-Savart}
+    {$d\vec B = \dfrac{\mu}{4\pi}\,\dfrac{I\,d\vec l\times\vec r}{r^3}$}
+    {T}
+    {$I$ : courant électrique parcourant un conducteur linéaire.
+     \image{biot-savart}
+     $d\vec l$ : élément du conducteur (m). \newline
+     $d\vec B$ : élément de champ magnétique créé par l'élément de courant $I\,d\vec l$ au point P.}
+  \ligne{Densité d'énergie magnétique}
+    {$w = \dfrac{1}{2\mu}B^2$}
+    {$\frac{\mathrm{J}}{\mathrm{m^3}}$}
+    {}
+  \ligne{\textbf{Règles géométriques}}
+    {Règle de la main droite \image{main-droite}}
+    {}
+    {Règle du tire-bouchon \image{tire-bouchon}}
+\end{formules}
+
+% ============================================================
+%  Pages 12-13 — Champs magnétiques particuliers
+% ============================================================
+\subsection{Champs magnétiques particuliers}
+\begin{formules}
+  \ligne{Conducteur rectiligne infini}
+    {$B = \dfrac{\mu I}{2\pi r}$}
+    {T}
+    {\image{fil-infini}
+     $B$ : module du champ magnétique créé par le courant au point P \newline
+     $r$ : distance au point P}
+  \ligne{Segment rectiligne}
+    {$\begin{gathered}
+      B = \frac{\mu NI}{4\pi r}\biggl(\frac{b}{\sqrt{r^2+b^2}} \\
+      + \frac{a}{\sqrt{r^2+a^2}}\biggr) \\
+      \text{Centré : } a = b = L/2 \\
+      B = \frac{\mu NI}{4\pi r}\,\frac{L}{\sqrt{r^2+\frac{L^2}{4}}}
+     \end{gathered}$}
+    {T}
+    {\image{segment}
+     $L$ : longueur du segment \newline
+     $a, b$ : longueur des sous-segments \newline
+     $L = a + b$}
+  \ligne{Au centre d'une bobine plate}
+    {$B = \dfrac{\mu NI}{2R}$}
+    {T}
+    {$R \gg L$ \image{bobine-plate}}
+  \ligne{Au centre d'une bobine longue \newline (Solénoïde)}
+    {$B = \dfrac{\mu NI}{L}$}
+    {T}
+    {\image{solenoide} $R \ll L$}
+  \ligne{Au centre d'une bobine quelconque}
+    {$B = \dfrac{\mu NI}{\sqrt{4R^2 + L^2}}$}
+    {T}
+    {$N$ : nombre de spires \newline
+     $R$ : rayon de la bobine \newline
+     $L$ : longueur de la bobine}
+  \ligne{Bobine torique}
+    {$B = \dfrac{\mu NI}{2\pi R_m}$}
+    {T}
+    {\image{tore}
+     $N$ : nombre de spires autour du tore \newline
+     $R_m$ : rayon moyen du tore}
+  \ligne{Bobines de Helmholtz}
+    {Au centre : \newline
+     $B = \dfrac{8}{5\sqrt5}\,\dfrac{\mu NI}{R}$}
+    {T}
+    {\image{helmholtz}
+     $N$ : nombre de spires de chaque bobine \newline
+     $R$ : rayon des bobines}
+  \lignepleine{Bobines de Helmholtz -- sur l'axe des bobines : \newline
+     \hspace*{\fill}$B(x) = \dfrac{\mu NIR^2}{2}\left[\dfrac{1}{\left(R^2+\left(x-\frac{R}{2}\right)^2\right)^{\frac32}}
+      + \dfrac{1}{\left(R^2+\left(x+\frac{R}{2}\right)^2\right)^{\frac32}}\right]$ \qquad [T]\hspace*{\fill}}
+\end{formules}
+
+% ============================================================
+%  Pages 13-14 — Forces magnétostatiques
+% ============================================================
+\subsection{Forces magnétostatiques}
+\begin{formules}
+  \ligne{Force de Lorentz}
+    {Magnétique : \newline $\vec F = q\,\vec v\times\vec B$}
+    {N}
+    {\image{lorentz}
+     $q$ : charge électrique plongée dans les champs $\vec B$ \newline
+     $\vec v$ : vitesse de déplacement de la charge}
+  \lignecouleur{Force électro\-magnétique}
+    {$\vec F = q\left(\vec E + \vec v\times\vec B\right)$}
+    {N}
+    {Combinaison des forces de Coulomb et Laplace}
+  \ligne{Force de Laplace}
+    {Cas général : \newline
+     $\vec F = \displaystyle\int_A^B \left(I\,d\vec l\times\vec B\right)$ \newline
+     Champ homogène : \newline
+     $d\vec F = I\,d\vec l\times\vec B$ \newline
+     Conducteur rectiligne et champ homogène : \newline
+     $\vec F = I\,\vec L\times\vec B$}
+    {N}
+    {A, B : extrémité du fil conducteur linéaire de forme quelconque \newline
+     $d\vec l$ : élément du conducteur (m) \newline
+     $\vec L$ : longueur du conducteur
+     \image{laplace}}
+\end{formules}
+
+% ============================================================
+%  Page 14 — Moment magnétique
+% ============================================================
+\subsection{Moment magnétique}
+\begin{formules}
+  \ligne{Moment magnétique (dipolaire) d'une boucle de courant}
+    {$\vec\mu = I\cdot\vec S$}
+    {A$\cdot$m$^2$}
+    {$I$ : courant électrique parcourant la boucle. \newline
+     $\vec S$ : vecteur surface de la boucle.
+     \image{moment}}
+  \ligne{Moment de force sur une boucle de courant}
+    {$\vec\tau = \vec\mu\times\vec B$}
+    {N$\cdot$m}
+    {}
+  \ligne{Energie potentielle$^*$}
+    {$W = -\vec\mu\cdot\vec B$}
+    {J}
+    {}
+  \note{$^*$ Par convention, $W$ est nulle quand $\vec\mu$ est perpendiculaire à $\vec B$.}
+\end{formules}
+
+% ============================================================
+%  Page 15 — Théorème d'Ampère
+% ============================================================
+\subsection{Théorème d'Ampère}
+\begin{formules}
+  \lignecouleur{Théorème d'Ampère}
+    {$\displaystyle\oint_{\Gamma_0}\vec B\cdot d\vec l = \mu\sum_i I_i$ \newline
+     Equation locale : \newline
+     $\vec\nabla\times\vec B = \mu\vec\jmath$}
+    {$\frac{\mathrm{V\cdot s}}{\mathrm{m}}$}
+    {\image{ampere}
+     $\Gamma_0$ : contour fermé. \newline
+     $d\vec l$ : élément de contour. \newline
+     $I_i$ : lignes de courant passant dans $\Gamma_0$. \newline
+     $\bullet$ \textit{La règle du tire-bouchon appliqué au sens de $d\vec l$ définit le sens positif des courants $I_i$.}}
+  \lignecouleur{Théorème de Gauss magnétique}
+    {$\displaystyle\oiint_S \vec B\cdot d\vec S = 0$ \newline
+     Loi locale : \newline
+     $\vec\nabla\cdot\vec B = 0$}
+    {}
+    {\image{gauss-magnetique}
+     $S$ : surface fermée \newline
+     $d\vec S$ : élément de surface \newline
+     $\vec\nabla$ : opérateur nabla}
+\end{formules}
+
+% ============================================================
+%  Pages 16-17 — Induction
+% ============================================================
+\subsection{Induction}
+\begin{formules}
+  \ligne{Flux du champ magnétique}
+    {$\Phi = \displaystyle\iint_S \vec B\cdot d\vec S$}
+    {Wb}
+    {\image[0.6\linewidth]{flux}}
+  \lignecouleur{Loi du flux magnétique}
+    {$\Phi_S = \displaystyle\oiint_S \vec B\cdot d\vec S = 0$ \newline
+     Equation locale : \newline
+     $\vec\nabla\cdot\vec B = 0$}
+    {Wb}
+    {$S$ : surface fermée \newline
+     $\bullet$ \textit{Les lignes de champ magnétique se bouclent.} \newline
+     $\bullet$ \textit{Pas monopôle magnétique.}}
+  \ligne{Loi d'induction de Faraday}
+    {$U_{ind} = -\dfrac{d\Phi}{dt}$}
+    {V}
+    {$U_{ind}$ : tension induite le long d'une boucle fermée. \textbf{Force électromotrice.} \newline
+     $U_{ind} < 0$ car la boucle est un générateur. \newline
+     $\bullet$ \textit{Signe de $\Phi$ : la règle du tire-bouchon appliquée au vecteur $\vec S$ définit le sens positif des tensions dans la boucle.}}
+  \lignecouleur{Loi d'induction de Faraday}
+    {Loi locale : \newline
+     $\vec\nabla\times\vec E = -\dfrac{\partial\vec B}{\partial t}$}
+    {V}
+    {}
+  \ligne{Loi de Lenz}
+    {Le sens du courant induit dans un circuit électrique s'oppose à la variation du flux initial. \newline
+     Ainsi la force électromotrice induite s'oppose à la cause qui l'engendre.}
+    {}
+    {Loi phénoménologique. \newline
+     Selon la règle du tire-bouchon, le courant induit va créer un champ magnétique induit : \newline
+     $\bullet$ opposé à $\vec B$ quand $\Phi$ augmente ; \newline
+     $\bullet$ colinéaire à $\vec B$ quand $\Phi$ diminue.}
+  \lignecouleur{Théorème d'Ampère - Maxwell}
+    {$\begin{gathered}
+      \oint_{\Gamma_0}\vec B\cdot d\vec l = \mu\sum_i I_i + \varepsilon\mu\frac{d\Phi}{dt} \\
+      \text{Equation locale :} \\
+      \vec\nabla\times\vec B = \mu\vec\jmath + \varepsilon\mu\frac{\partial\vec E}{\partial t}
+     \end{gathered}$}
+    {$\frac{\mathrm{V\cdot s}}{\mathrm{m}}$}
+    {$\Gamma_0$ : contour fermé. \newline
+     $d\vec l$ : élément de contour. \newline
+     $I_i$ : lignes de courant passant dans $\Gamma_0$. \newline
+     $\bullet$ \textit{La règle du tire-bouchon appliqué au sens de $d\vec l$ définit le sens positif des courants $I_i$.}}
+  \soustitre{Inductances des circuits fermés}
+  \ligne{Auto-inductance}
+    {$L = \dfrac{\Phi}{i}$ \newline
+     $U_{ind} = -L\dfrac{di}{dt}$}
+    {H \newline\newline V}
+    {$\Phi$ : flux magnétique intercepté par le circuit \newline
+     $L$ : coefficient d'auto-inductance [H] \newline
+     $U_{ind}$ : tension induite dans le circuit [V] \newline
+     $i$ : courant variable circulant dans le circuit [A]}
+  \ligne{Auto-inductance d'un solénoïde \newline Self}
+    {$L = \mu N^2\dfrac{S}{d}$}
+    {H}
+    {$d$ : longueur de la bobine \newline
+     $N$ : nombre de spires \newline
+     $S$ : surface d'une spire}
+  \ligne{Energie magnétique d'un solénoïde}
+    {$W = \dfrac{1}{2}LI^2$}
+    {J}
+    {}
+  \ligne{Inductance mutuelle}
+    {$M_{21} = \dfrac{\Phi_2}{i_1}$ \newline
+     $U_{ind,2} = -M_{21}\dfrac{di_1}{dt}$}
+    {H \newline\newline V}
+    {$\Phi_2$ : flux magnétique intercepté par le circuit 2 \newline
+     $M_{21}$ : coefficient d'inductance mutuelle entre les circuits 1 et 2 [H] \newline
+     $i_1$ : courant variable circulant dans le circuit 1 [A] \newline
+     $U_{ind,2}$ : tension induite dans le circuit 2}
+  \soustitre{Circuits magnétiques}
+  \ligne{Solénation$^*$}
+    {$U_m = NI$}
+    {A}
+    {$N$ : nombre de spire du bobinage \newline
+     $I$ : courant parcourant le bobinage}
+  \ligne{Reluctance d'un barreau}
+    {$R_m = \dfrac{d}{\mu S}$}
+    {A/Wb \newline 1/H}
+    {$d$ : longueur du barreau \newline
+     $S$ section du barreau}
+  \ligne{Reluctances en série}
+    {$R_{m,tot} = \sum\limits_i R_{m,i}$}
+    {A/Wb \newline 1/H}
+    {$R_{m,tot}$ : reluctance totale \newline
+     $R_{m,i}$ : reluctance de l'élément $i$}
+  \ligne{Perméance d'un barreau}
+    {$\Lambda_m = \dfrac{1}{R_m}$}
+    {Wb/A \newline H}
+    {}
+  \ligne{Perméances en parallèle}
+    {$\Lambda_{m,tot} = \sum\limits_i \Lambda_{m,i}$}
+    {Wb/A \newline H}
+    {$\Lambda_{m,tot}$ : perméance totale \newline
+     $\Lambda_{m,i}$ : perméance de l'élément $i$}
+  \ligne{Loi d'Ohm magnétique}
+    {$\Phi = \dfrac{U_m}{R_m}$}
+    {Wb}
+    {}
+  \note{$^*$ Aussi appelée « différence de potentiel magnétique » ou « force magnétomotrice »
+        ou « ampères-tours », toujours par analogie avec les circuits électriques.}
+\end{formules}
